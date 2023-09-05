@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>CancerDataSci101 - 2&nbsp; Cancer across the globe</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../pages/ch1.html" rel="prev">
+<link href="../assets/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script src="../site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="../site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="../site_libs/leaflet-1.3.1/leaflet.js"></script><link href="../site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="../site_libs/proj4-2.6.2/proj4.min.js"></script><script src="../site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="../site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="../site_libs/leaflet-binding-2.2.0/leaflet.js"></script><script src="../site_libs/leaflet-providers-1.13.0/leaflet-providers_1.13.0.js"></script><script src="../site_libs/leaflet-providers-plugin-2.2.0/leaflet-providers-plugin.js"></script><link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="../site_libs/datatables-binding-0.29/datatables.js"></script><link href="../site_libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../site_libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="../site_libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="../site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+</head>
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/ch2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Cancer across the globe</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">CancerDataSci101</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-git"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+<li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/vjcitn/CancerDataSci101/">
+            Source Code
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://vjcitn.github.io/CancerDataSci101/devel/">
+            Browse version `devel`
+            </a>
+          </li>
+      </ul>
+</div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/ch1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Counting cancers</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/ch2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Cancer across the globe</span></span></a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li>
+<a href="#interactive-cancer-maps" id="toc-interactive-cancer-maps" class="nav-link active" data-scroll-target="#interactive-cancer-maps"><span class="header-section-number">2.1</span> Interactive cancer maps</a>
+  <ul class="collapse">
+<li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.1.1</span> Exercises</a></li>
+  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">2.1.2</span> Answers</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#basic-geographic-data-about-us-counties" id="toc-basic-geographic-data-about-us-counties" class="nav-link" data-scroll-target="#basic-geographic-data-about-us-counties"><span class="header-section-number">2.2</span> Basic geographic data about US counties</a>
+  <ul class="collapse">
+<li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">2.2.1</span> Exercise</a></li>
+  <li><a href="#answers-1" id="toc-answers-1" class="nav-link" data-scroll-target="#answers-1"><span class="header-section-number">2.2.2</span> Answers</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#an-interactive-map-of-the-us-with-cancer-rates" id="toc-an-interactive-map-of-the-us-with-cancer-rates" class="nav-link" data-scroll-target="#an-interactive-map-of-the-us-with-cancer-rates"><span class="header-section-number">2.3</span> An interactive map of the US with cancer rates</a>
+  <ul class="collapse">
+<li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1"><span class="header-section-number">2.3.1</span> Exercise</a></li>
+  <li><a href="#answers-2" id="toc-answers-2" class="nav-link" data-scroll-target="#answers-2"><span class="header-section-number">2.3.2</span> Answers</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#a-data-graphic" id="toc-a-data-graphic" class="nav-link" data-scroll-target="#a-data-graphic"><span class="header-section-number">2.4</span> A data graphic</a>
+  <ul class="collapse">
+<li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2"><span class="header-section-number">2.4.1</span> Exercise</a></li>
+  <li><a href="#answer" id="toc-answer" class="nav-link" data-scroll-target="#answer"><span class="header-section-number">2.4.2</span> Answer</a></li>
+  </ul>
+</li>
+  <li><a href="#cancer-rates-in-massachusetts-counties-tabulated" id="toc-cancer-rates-in-massachusetts-counties-tabulated" class="nav-link" data-scroll-target="#cancer-rates-in-massachusetts-counties-tabulated"><span class="header-section-number">2.5</span> Cancer rates in Massachusetts counties, tabulated</a></li>
+  <li><a href="#mapping-the-rates" id="toc-mapping-the-rates" class="nav-link" data-scroll-target="#mapping-the-rates"><span class="header-section-number">2.6</span> Mapping the rates</a></li>
+  <li><a href="#addressing-uncertainty-in-the-rates" id="toc-addressing-uncertainty-in-the-rates" class="nav-link" data-scroll-target="#addressing-uncertainty-in-the-rates"><span class="header-section-number">2.7</span> Addressing uncertainty in the rates</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">2.8</span> Exercises</a></li>
+  <li><a href="#answers-3" id="toc-answers-3" class="nav-link" data-scroll-target="#answers-3"><span class="header-section-number">2.9</span> Answers</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Cancer across the globe</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header><section id="interactive-cancer-maps" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="interactive-cancer-maps">
+<span class="header-section-number">2.1</span> Interactive cancer maps</h2>
+<ul>
+<li>Twenty years ago the most common Geographic Information System was the paper map or road atlas</li>
+<li>Now our cell-phones can ask the internet how to get to where we want to go, efficiently</li>
+<li>Understanding how cancer events unfold in different geographic regions is important for public health
+<ul>
+<li>Are there important environmental hazards at specific locations?</li>
+<li>Are there clues to genetic origins of particular cancers?</li>
+<li>Are culturally shared behaviors leading to increased risk?</li>
+</ul>
+</li>
+<li>Even though we are comfortable with annotated maps, creating and using “cancer maps” to reason about cancer risk requires some training</li>
+<li>In this notebook we will work with some interactive maps on the web, and we will produce some maps using R programming</li>
+</ul>
+<p>A basic concern in mapping cancer rates is discovery of “clusters”. A review of cancer cluster investigations was <a href="https://pubmed.ncbi.nlm.nih.gov/22519802/">published in 2012</a>. Results:</p>
+<blockquote class="blockquote">
+<p>We reviewed 428 investigations evaluating 567 cancers of concern. An increase in incidence was confirmed for 72 (13%) cancer categories (including the category “all sites”). Three of those were linked (with variable degree of certainty) to hypothesized exposures, but only one investigation revealed a clear cause.</p>
+</blockquote>
+<p>The conclusion of this report:</p>
+<blockquote class="blockquote">
+<p>There are fundamental shortcomings to our current methods of investigating community cancer clusters. We recommend a multidisciplinary national dialogue on creative, innovative approaches to understanding when and why cancer and other chronic diseases cluster in space and time.</p>
+</blockquote>
+<p>This motivates us to learn about map production and rate estimation in YES for CURE.</p>
+<section id="exercises" class="level3" data-number="2.1.1"><h3 data-number="2.1.1" class="anchored" data-anchor-id="exercises">
+<span class="header-section-number">2.1.1</span> Exercises</h3>
+<p>Use the <a href="https://gco.iarc.fr/today/online-analysis-map?v=2020&amp;mode=population&amp;mode_population=continents&amp;population=900&amp;populations=900&amp;key=asr&amp;sex=0&amp;cancer=39&amp;type=0&amp;statistic=5&amp;prevalence=0&amp;population_group=0&amp;ages_group%5B%5D=0&amp;ages_group%5B%5D=17&amp;nb_items=10&amp;group_cancer=1&amp;include_nmsc=0&amp;include_nmsc_other=0&amp;projection=natural-earth&amp;color_palette=default&amp;map_scale=quantile&amp;map_nb_colors=5&amp;continent=0&amp;show_ranking=0&amp;rotate=%255B10%252C0%255D">International Agency for Research on Cancer (IARC) map tool</a> to survey mortality from cancer in 2020 for individuals aged 10-24. You should see something like the display below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/IARCoverall.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">IARC map</figcaption></figure>
+</div>
+<p>B.1.1 True or False: Age standardized mortality from cancer in 2020 for persons aged 10-24 is greater in Vietnam than in neighboring countries.</p>
+<p>Use the IARC map tool to produce a worldwide map of breast cancer incidence for women aged 60-79.</p>
+<p>B.1.2 What is the Scandinavian country with largest estimate of age-standardized breast cancer incidence for women aged 60-79?</p>
+</section><section id="answers" class="level3" data-number="2.1.2"><h3 data-number="2.1.2" class="anchored" data-anchor-id="answers">
+<span class="header-section-number">2.1.2</span> Answers</h3>
+<pre><code>B.1.1
+
+B.1.2</code></pre>
+</section></section><section id="basic-geographic-data-about-us-counties" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="basic-geographic-data-about-us-counties">
+<span class="header-section-number">2.2</span> Basic geographic data about US counties</h2>
+<p>The coordinates of central locations in US counties are provided in <code>us_county_geo</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">us_county_geo</span><span class="op">)</span></span>
+<span><span class="va">us_county_geo</span> <span class="op">|&gt;</span> <span class="fu">select</span><span class="op">(</span><span class="va">state</span>, <span class="va">county</span>, <span class="va">geometry</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">##  Simple feature collection with 6 features and 2 fields</span></span>
+<span><span class="co">##  Geometry type: POINT</span></span>
+<span><span class="co">##  Dimension:     XY</span></span>
+<span><span class="co">##  Bounding box:  xmin: -87.74607 ymin: 30.65922 xmax: -85.4051 ymax: 33.97736</span></span>
+<span><span class="co">##  CRS:           NA</span></span>
+<span><span class="co">##  # A tibble: 6 × 3</span></span>
+<span><span class="co">##    state county                     geometry</span></span>
+<span><span class="co">##    &lt;chr&gt; &lt;chr&gt;                       &lt;POINT&gt;</span></span>
+<span><span class="co">##  1 AL    Autauga County (-86.64644 32.53224)</span></span>
+<span><span class="co">##  2 AL    Baldwin County (-87.74607 30.65922)</span></span>
+<span><span class="co">##  3 AL    Barbour County  (-85.4051 31.87025)</span></span>
+<span><span class="co">##  4 AL    Bibb County    (-87.12715 33.01589)</span></span>
+<span><span class="co">##  5 AL    Blount County  (-86.56644 33.97736)</span></span>
+<span><span class="co">##  6 AL    Bullock County (-85.71726 32.10176)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Coordinates for metropolitan statistical areas are provided by “statcrunch”:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">statcrunch_msa</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">statcrunch_msa</span><span class="op">)</span></span>
+<span><span class="co">##    rank                                         msa  pop2013  pop2020</span></span>
+<span><span class="co">##  1    1       New York-Newark-Jersey City, NY-NJ-PA 19949502 19567410</span></span>
+<span><span class="co">##  2    2          Los Angeles-Long Beach-Anaheim, CA 13131431 12828837</span></span>
+<span><span class="co">##  3    3          Chicago-Naperville-Elgin, IL-IN-WI  9537289  9461105</span></span>
+<span><span class="co">##  4    4             Dallas-Fort Worth-Arlington, TX  6810913  6426214</span></span>
+<span><span class="co">##  5    5        Houston-The Woodlands-Sugar Land, TX  6313158  5920416</span></span>
+<span><span class="co">##  6    6 Philadelphia-Camden-Wilmington, PA-NJ-DE-MD  6034678  5965343</span></span>
+<span><span class="co">##    changepct changecat      lat        lng</span></span>
+<span><span class="co">##  1      1.95    0 to 5 40.71278  -74.00594</span></span>
+<span><span class="co">##  2      2.36    0 to 5 34.05223 -118.24368</span></span>
+<span><span class="co">##  3      0.81    0 to 5 41.87811  -87.62980</span></span>
+<span><span class="co">##  4      5.99   5 to 10 32.78014  -96.80045</span></span>
+<span><span class="co">##  5      6.63   5 to 10 29.76019  -95.36939</span></span>
+<span><span class="co">##  6      1.16    0 to 5 39.95233  -75.16379</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This geographic data has already been used to enhance the CDC incidence data in <code>woncan</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">woncan</span><span class="op">)</span></span>
+<span><span class="va">woncan</span> <span class="op">|&gt;</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">MSA</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu">summarize</span><span class="op">(</span>lat<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">lat</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, lng<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">lng</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">##  # A tibble: 6 × 3</span></span>
+<span><span class="co">##    MSA                                 lat    lng</span></span>
+<span><span class="co">##    &lt;chr&gt;                             &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">##  1 Akron, OH                          41.1  -81.5</span></span>
+<span><span class="co">##  2 Albany-Schenectady-Troy, NY        42.7  -73.8</span></span>
+<span><span class="co">##  3 Albuquerque, NM                    35.1 -107. </span></span>
+<span><span class="co">##  4 Allentown-Bethlehem-Easton, PA-NJ  40.6  -75.5</span></span>
+<span><span class="co">##  5 Atlanta-Sandy Springs-Roswell, GA  33.7  -84.4</span></span>
+<span><span class="co">##  6 Augusta-Richmond County, GA-SC     33.5  -82.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="exercise" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="exercise">
+<span class="header-section-number">2.2.1</span> Exercise</h3>
+<p>B.2.1 Create a new notebook cell and run <code>YESCDS::table_woncan("Prostate")</code></p>
+<p>B.2.2 Use this table to find the latitude and longitude of Boston.</p>
+</section><section id="answers-1" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="answers-1">
+<span class="header-section-number">2.2.2</span> Answers</h3>
+<pre><code>B.2.1
+
+B.2.2</code></pre>
+</section></section><section id="an-interactive-map-of-the-us-with-cancer-rates" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="an-interactive-map-of-the-us-with-cancer-rates">
+<span class="header-section-number">2.3</span> An interactive map of the US with cancer rates</h2>
+<p>After combining cancer rate data for a collection of cancer types and metropolitan statistical areas, we can produce a map showing variation in cancer incidence over the United States. Here is the example for stomach cancer:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">cancer_map_usa</span><span class="op">(</span>site<span class="op">=</span><span class="st">"Stomach"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-2f8384f06b64f6c4a69e" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-2f8384f06b64f6c4a69e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[41.0814447,42.6525793,35.110703,40.6084305,33.7489954,33.4734978,30.267153,35.3732921,39.2903848,30.4582829,33.5206608,43.6187102,42.3584308,41.1865478,42.88644679999999,26.5628537,32.7764749,35.2270869,35.0456297,41.8781136,39.1031182,41.49932,38.8338816,34.0007104,39.9611755,32.7801399,null,28.9005446,39.737567,41.6005448,42.331427,35.9940329,31.7775757,35.0526641,36.0625795,36.7468422,42.9633599,36.0726354,34.85261759999999,40.2731911,41.76371109999999,29.7601927,39.768403,32.2987573,30.3321838,39.0997265,35.9606384,28.0394654,40.0378755,42.732535,36.1699412,38.0405837,34.7464809,34.0522342,null,43.0730517,26.2034071,35.1495343,25.7890972,43.0389025,44.983334,37.63909719999999,null,41.308274,29.95106579999999,40.7127837,27.044224,41.223,35.4675602,41.2523634,28.5383355,34.1975048,28.0344621,39.952335,33.4483771,40.44062479999999,43.66147100000001,45.5234515,null,41.8239891,40.2338438,35.7795897,37.5407246,33.9533487,43.16103,null,38.6270025,40.7607793,29.4241219,32.715738,null,37.3393857,38.440429,null,47.6062095,47.6587802,42.1014831,37.9577016,43.0481221,27.950575,41.6639383,32.2217429,36.1539816,21.3008204,36.8529263,38.9071923,null,36.1039642,42.2625932,41.0997803,null],[-81.51900529999999,-73.7562317,-106.609991,-75.49018330000001,-84.3879824,-82.01051480000001,-97.74306079999997,-119.0187125,-76.61218930000001,-91.1403196,-86.80248999999998,-116.2146068,-71.0597732,-73.19517669999999,-78.8783689,-81.9495331,-79.93105120000001,-80.84312669999997,-85.30968009999998,-87.62979819999998,-84.51201960000003,-81.69436050000002,-104.8213634,-81.03481440000002,-82.99879420000002,-96.80045109999998,null,-81.26367379999999,-104.9847179,-93.60910639999996,-83.0457538,-78.898619,-106.4424559,-78.87835849999999,-94.1574263,-119.7725868,-85.66808630000003,-79.79197540000001,-82.39401040000001,-76.88670079999997,-72.68509319999998,-95.36938959999998,-86.15806800000001,-90.18481029999998,-81.65565099999998,-94.5785667,-83.92073920000001,-81.94980420000002,-76.30551439999999,-84.55553470000001,-115.1398296,-84.50371640000003,-92.28959479999996,-118.2436849,null,-89.40123019999999,-98.23001239999996,-90.04898009999999,-80.20404350000001,-87.90647360000003,-93.26666999999998,-120.9968782,null,-72.92788350000001,-90.0715323,-74.00594130000002,-82.23592539999999,-111.9738304,-97.5164276,-95.99798829999996,-81.37923649999999,-119.1770516,-80.58866460000002,-75.16378900000001,-112.0740373,-79.99588640000002,-70.2553259,-122.6762071,null,-71.41283429999999,-111.6585337,-78.63817870000003,-77.43604809999999,-117.3961564,-77.61092189999999,null,-90.19940419999999,-111.8910474,-98.4936282,-117.1610838,null,-121.8949555,-122.7140548,null,-122.3320708,-117.4260466,-72.589811,-121.2907796,-76.14742439999998,-82.45717760000002,-83.55521199999998,-110.926479,-95.99277499999999,-157.8626016,-75.97798499999999,-77.03687070000001,null,-80.254435,-71.8022934,-80.64951940000003,null],[5.9,7,6.7,7.1,6.7,6.2,6.2,7.2,6.9,7.2,6.9,5.7,7.1,8.699999999999999,7.7,4.7,8.5,6.5,5.2,8.4,6.2,7.5,4.9,7.1,6,6.6,5.8,5.9,6,5.3,7.7,6.7,9.800000000000001,7.9,6,8,5.6,5.9,6.2,5.4,8.300000000000001,7.3,5.6,7.9,6.4,null,5.2,6.6,6.3,5.4,6.3,5.3,6.4,9.4,6.5,5.5,8.800000000000001,7.5,7.4,6.9,null,6.9,5.6,8.5,8.199999999999999,9.699999999999999,4.8,4.4,5.8,5.8,6.6,6.9,6,7.5,5.3,7.3,5.6,5.9,7.6,8.300000000000001,3.9,6.7,6.6,6.9,7,6.7,5.7,5.3,7.6,6.5,8,8.300000000000001,null,7.4,6.7,4.9,7.1,8.1,7,6.2,6.1,5.5,5.6,10.9,6.3,6.9,null,6.3,6.4,7.2,5.9],null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,["Akron, OH<br>Stomach: 5.9","Albany-Schenectady-Troy, NY<br>Stomach: 7","Albuquerque, NM<br>Stomach: 6.7","Allentown-Bethlehem-Easton, PA-NJ<br>Stomach: 7.1","Atlanta-Sandy Springs-Roswell, GA<br>Stomach: 6.7","Augusta-Richmond County, GA-SC<br>Stomach: 6.2","Austin-Round Rock, TX<br>Stomach: 6.2","Bakersfield, CA<br>Stomach: 7.2","Baltimore-Columbia-Towson, MD<br>Stomach: 6.9","Baton Rouge, LA<br>Stomach: 7.2","Birmingham-Hoover, AL<br>Stomach: 6.9","Boise City, ID<br>Stomach: 5.7","Boston-Cambridge-Newton, MA-NH<br>Stomach: 7.1","Bridgeport-Stamford-Norwalk, CT<br>Stomach: 8.7","Buffalo-Cheektowaga-Niagara Falls, NY<br>Stomach: 7.7","Cape Coral-Fort Myers, FL<br>Stomach: 4.7","Charleston-North Charleston, SC<br>Stomach: 8.5","Charlotte-Concord-Gastonia, NC-SC<br>Stomach: 6.5","Chattanooga, TN-GA<br>Stomach: 5.2","Chicago-Naperville-Elgin, IL-IN-WI<br>Stomach: 8.4","Cincinnati, OH-KY-IN<br>Stomach: 6.2","Cleveland-Elyria, OH<br>Stomach: 7.5","Colorado Springs, CO<br>Stomach: 4.9","Columbia, SC<br>Stomach: 7.1","Columbus, OH<br>Stomach: 6","Dallas-Fort Worth-Arlington, TX<br>Stomach: 6.6","Dayton-Kettering, OH<br>Stomach: 5.8","Deltona-Daytona Beach-Ormond Beach, FL<br>Stomach: 5.9","Denver-Aurora-Lakewood, CO<br>Stomach: 6","Des Moines-West Des Moines, IA<br>Stomach: 5.3","Detroit-Warren-Dearborn, MI<br>Stomach: 7.7","Durham-Chapel Hill, NC<br>Stomach: 6.7","El Paso, TX<br>Stomach: 9.8","Fayetteville, NC<br>Stomach: 7.9","Fayetteville-Springdale-Rogers, AR-MO<br>Stomach: 6","Fresno, CA<br>Stomach: 8","Grand Rapids-Wyoming, MI<br>Stomach: 5.6","Greensboro-High Point, NC<br>Stomach: 5.9","Greenville-Anderson-Mauldin, SC<br>Stomach: 6.2","Harrisburg-Carlisle, PA<br>Stomach: 5.4","Hartford-West Hartford-East Hartford, CT<br>Stomach: 8.3","Houston-The Woodlands-Sugar Land, TX<br>Stomach: 7.3","Indianapolis-Carmel-Anderson, IN<br>Stomach: 5.6","Jackson, MS<br>Stomach: 7.9","Jacksonville, FL<br>Stomach: 6.4","Kansas City, MO-KS<br>Stomach: NA","Knoxville, TN<br>Stomach: 5.2","Lakeland-Winter Haven, FL<br>Stomach: 6.6","Lancaster, PA<br>Stomach: 6.3","Lansing-East Lansing, MI<br>Stomach: 5.4","Las Vegas-Henderson-Paradise, NV<br>Stomach: 6.3","Lexington-Fayette, KY<br>Stomach: 5.3","Little Rock-North Little Rock-Conway, AR<br>Stomach: 6.4","Los Angeles-Long Beach-Anaheim, CA<br>Stomach: 9.4","Louisville-Jefferson County, KY-IN<br>Stomach: 6.5","Madison, WI<br>Stomach: 5.5","McAllen-Edinburg-Mission, TX<br>Stomach: 8.8","Memphis, TN-MS-AR<br>Stomach: 7.5","Miami-Fort Lauderdale-West Palm Beach, FL<br>Stomach: 7.4","Milwaukee-Waukesha-West Allis, WI<br>Stomach: 6.9","Minneapolis-St. Paul-Bloomington, MN-WI<br>Stomach: NA","Modesto, CA<br>Stomach: 6.9","Nashville-Davidson-Murfreesboro-Franklin, TN<br>Stomach: 5.6","New Haven-Milford, CT<br>Stomach: 8.5","New Orleans-Metairie, LA<br>Stomach: 8.2","New York-Newark-Jersey City, NY-NJ-PA<br>Stomach: 9.7","North Port-Sarasota-Bradenton, FL<br>Stomach: 4.8","Ogden-Clearfield, UT<br>Stomach: 4.4","Oklahoma City, OK<br>Stomach: 5.8","Omaha-Council Bluffs, NE-IA<br>Stomach: 5.8","Orlando-Kissimmee-Sanford, FL<br>Stomach: 6.6","Oxnard-Thousand Oaks-Ventura, CA<br>Stomach: 6.9","Palm Bay-Melbourne-Titusville, FL<br>Stomach: 6","Philadelphia-Camden-Wilmington, PA-NJ-DE-MD<br>Stomach: 7.5","Phoenix-Mesa-Scottsdale, AZ<br>Stomach: 5.3","Pittsburgh, PA<br>Stomach: 7.3","Portland-South Portland, ME<br>Stomach: 5.6","Portland-Vancouver-Hillsboro, OR-WA<br>Stomach: 5.9","Poughkeepsie-Newburgh-Middletown, NY<br>Stomach: 7.6","Providence-Warwick, RI-MA<br>Stomach: 8.3","Provo-Orem, UT<br>Stomach: 3.9","Raleigh, NC<br>Stomach: 6.7","Richmond, VA<br>Stomach: 6.6","Riverside-San Bernardino-Ontario, CA<br>Stomach: 6.9","Rochester, NY<br>Stomach: 7","Sacramento-Roseville-Arden-Arcade, CA<br>Stomach: 6.7","St. Louis, MO-IL<br>Stomach: 5.7","Salt Lake City, UT<br>Stomach: 5.3","San Antonio-New Braunfels, TX<br>Stomach: 7.6","San Diego-Carlsbad, CA<br>Stomach: 6.5","San Francisco-Oakland-Hayward, CA<br>Stomach: 8","San Jose-Sunnyvale-Santa Clara, CA<br>Stomach: 8.3","Santa Rosa, CA<br>Stomach: NA","Scranton-Wilkes-Barre-Hazleton, PA<br>Stomach: 7.4","Seattle-Tacoma-Bellevue, WA<br>Stomach: 6.7","Spokane-Spokane Valley, WA<br>Stomach: 4.9","Springfield, MA<br>Stomach: 7.1","Stockton-Lodi, CA<br>Stomach: 8.1","Syracuse, NY<br>Stomach: 7","Tampa-St. Petersburg-Clearwater, FL<br>Stomach: 6.2","Toledo, OH<br>Stomach: 6.1","Tucson, AZ<br>Stomach: 5.5","Tulsa, OK<br>Stomach: 5.6","Urban Honolulu, HI<br>Stomach: 10.9","Virginia Beach-Norfolk-Newport News, VA-NC<br>Stomach: 6.3","Washington-Arlington-Alexandria, DC-VA-MD-WV<br>Stomach: 6.9","Wichita, KS  <br>Stomach: NA","Winston-Salem, NC<br>Stomach: 6.3","Worcester, MA-CT<br>Stomach: 6.4","Youngstown-Warren-Boardman, OH-PA<br>Stomach: 7.2","Other<br>Stomach: 5.9"],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addControl","args":["CDC WONDER age-adjusted rate per 100K, Stomach cancer","topleft",null,"map-title"]}],"setView":[[39,-93.90000000000001],4,[]],"limits":{"lat":[21.3008204,47.6587802],"lng":[-157.8626016,-70.2553259]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<section id="exercise-1" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="exercise-1">
+<span class="header-section-number">2.3.1</span> Exercise</h3>
+<p>B.2.3 Create a new notebook cell and run <code>cancer_map_usa(site="Prostate", scaling=0.05)</code></p>
+<p>B.2.4 Can you identify the area with the highest incidence of prostate cancer?</p>
+</section><section id="answers-2" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="answers-2">
+<span class="header-section-number">2.3.2</span> Answers</h3>
+<pre><code>B.2.3
+
+B.2.4</code></pre>
+</section></section><section id="a-data-graphic" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="a-data-graphic">
+<span class="header-section-number">2.4</span> A data graphic</h2>
+<p>Finally, to get a different view of variation in cancer rates across the United States, run a cell with the following command. Geographic location is lost, but the range of variation, and details of variation can be seen very clearly in these displays.</p>
+<pre><code>browseURL("https://vjcitn.shinyapps.io/ratevariation")</code></pre>
+<section id="exercise-2" class="level3" data-number="2.4.1"><h3 data-number="2.4.1" class="anchored" data-anchor-id="exercise-2">
+<span class="header-section-number">2.4.1</span> Exercise</h3>
+<p>B.2.5 Change the body site to “Pancreas” (remove “Brain”) and find, using the histogram tab, the areas with highest and lowest age-adjusted rates of pancreatic cancer.</p>
+</section><section id="answer" class="level3" data-number="2.4.2"><h3 data-number="2.4.2" class="anchored" data-anchor-id="answer">
+<span class="header-section-number">2.4.2</span> Answer</h3>
+<pre><code>B.2.5</code></pre>
+</section></section><section id="cancer-rates-in-massachusetts-counties-tabulated" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="cancer-rates-in-massachusetts-counties-tabulated">
+<span class="header-section-number">2.5</span> Cancer rates in Massachusetts counties, tabulated</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">datatable</span><span class="op">(</span><span class="fu">MA_cancer_rate_table</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8612aca069159566df18" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8612aca069159566df18">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],["Franklin County","Suffolk County","Berkshire County","Bristol County","Hampden County","Dukes County","Worcester County","Plymouth County","Essex County","Hampshire County","Middlesex County","Norfolk County","Barnstable County","Nantucket County"],["Female Breast","Female Breast","Female Breast","Female Breast","Female Breast","Female Breast","Female Breast","Female Breast","Female Breast","Female Breast","Female Breast","Female Breast","Female Breast","Female Breast"],["2014-2018","2014-2018","2014-2018","2014-2018","2014-2018","2014-2018","2014-2018","2014-2018","2014-2018","2014-2018","2014-2018","2014-2018","2014-2018","2014-2018"],[112.1,115.5,119.2,124.8,131.1,133.2,137.2,137.4,139.9,139.9,142,149.9,155.7,206.7],[99.3,110.8,108.7,119.6,125.1,103.8,132.5,131.7,135.1,128.9,138.6,144.7,146.8,158.8],[126.4,120.4,130.4,130.2,137.3,169.1,142,143.3,144.7,151.6,145.5,155.2,165,265.1],[317,2327,578,2298,1972,84,3471,2395,3573,689,6884,3421,1558,67],[181356,2041877,328982,1441276,1211539,44037,2082965,1316919,2021617,429127,4072897,1812311,558043,27036]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>County<\/th>\n      <th>Cancer.Type<\/th>\n      <th>Year<\/th>\n      <th>Age.Adjusted.Rate<\/th>\n      <th>lci<\/th>\n      <th>uci<\/th>\n      <th>Case.Count<\/th>\n      <th>Population<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section><section id="mapping-the-rates" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="mapping-the-rates">
+<span class="header-section-number">2.6</span> Mapping the rates</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">mass_cancer_map</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-359b5fbd67f490f4a640" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-359b5fbd67f490f4a640">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addControl","args":["<div><h4>Made with YESCDS::mass_map()<\/h4><\/div>","topleft",null,"map-title"]},{"method":"addMarkers","args":[[42.584504,42.338551,42.371493,41.748588,42.136198,41.38097,42.311693,41.987196,42.642708,42.339459,42.481718,42.171739,41.799014,41.305878],[-72.591792,-71.018253,-73.217928,-71.088894,-72.635648,-70.701499,-71.940282,-70.74194199999999,-70.864909,-72.66369400000001,-71.39491599999999,-71.181111,-70.21187999999999,-70.14191],{"iconUrl":{"data":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=","index":0},"iconWidth":1,"iconHeight":1},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,["Female Breast<br/>Franklin County<br/>112.1","Female Breast<br/>Suffolk County<br/>115.5","Female Breast<br/>Berkshire County<br/>119.2","Female Breast<br/>Bristol County<br/>124.8","Female Breast<br/>Hampden County<br/>131.1","Female Breast<br/>Dukes County<br/>133.2","Female Breast<br/>Worcester County<br/>137.2","Female Breast<br/>Plymouth County<br/>137.4","Female Breast<br/>Essex County<br/>139.9","Female Breast<br/>Hampshire County<br/>139.9","Female Breast<br/>Middlesex County<br/>142","Female Breast<br/>Norfolk County<br/>149.9","Female Breast<br/>Barnstable County<br/>155.7","Female Breast<br/>Nantucket County<br/>206.7"],{"interactive":false,"permanent":true,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[42.05,-71.78],8.5,[]],"limits":{"lat":[41.305878,42.642708],"lng":[-73.217928,-70.14191]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section><section id="addressing-uncertainty-in-the-rates" class="level2" data-number="2.7"><h2 data-number="2.7" class="anchored" data-anchor-id="addressing-uncertainty-in-the-rates">
+<span class="header-section-number">2.7</span> Addressing uncertainty in the rates</h2>
+<p>The reported rates are statistics collected over time and are adjusted using a model for age distribution in the US. The counts on which the reported rates are imprecise. Therefore “confidence limits” are produced with the rate estimates.</p>
+<p>Here are the prostate cancer rates in Massachusetts counties, plotted with confidence limits.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotwci</span><span class="op">(</span><span class="fu">MA_cancer_rate_table</span><span class="op">(</span><span class="st">"prostate"</span><span class="op">)</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">90</span>,<span class="fl">270</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="ch2_files/figure-html/lkd5b-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>One message from this display is that prostate cancer in Nantucket county has an estimated age-adjusted incidence in 2014-2018 of about 200 cases per 100000 men, but the actual rate may be lower or higher. The uncertainty of the estimate arises from the relatively small population of Nantucket county.</p>
+</section><section id="exercises-1" class="level2" data-number="2.8"><h2 data-number="2.8" class="anchored" data-anchor-id="exercises-1">
+<span class="header-section-number">2.8</span> Exercises</h2>
+<p>B.3.1 What are the reported population sizes for Middlesex and Nantucket counties?</p>
+<p>B.3.2 Run the following chunk to produce a different representation of incidence rates for cancers of lung and bronchus in California counties:</p>
+<pre><code>ordered_seg_cal()</code></pre>
+<p>Two statistics are presented for the US as a whole and for the entire state of California.</p>
+<p>B.3.3 True or False: We are fairly confident that the incidence of cancers of lung and bronchus in San Joaquin county is lower than that of the US as a whole.</p>
+<p>The midpoint of the plotted interval is the estimated incidence rate.</p>
+<p>B.3.4 Which California counties have incidence rates that are around half that of the US as a whole?</p>
+</section><section id="answers-3" class="level2" data-number="2.9"><h2 data-number="2.9" class="anchored" data-anchor-id="answers-3">
+<span class="header-section-number">2.9</span> Answers</h2>
+<pre><code>B.3.1
+
+B.3.2
+
+B.3.3
+
+B.3.4</code></pre>
+
+
+</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../pages/ch1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Counting cancers</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">This book was built with <a href="https://github.com/js2264/BiocBook/">BiocBook</a> with <span class="emoji" data-emoji="heart">❤️</span></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+</body></html>
